@@ -1,0 +1,94 @@
+/* Короткие версии: A — прокрутка, B — сторис, C — одна минута. Токены и шрифты — из style.css */
+.s-body{padding:0;overflow-x:clip}
+.s-top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;gap:12px;height:54px;padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));background:linear-gradient(180deg,rgba(8,17,29,.9),rgba(8,17,29,0))}
+.s-top img{height:20px;width:auto}
+.s-top .bar__lang{margin-left:auto}
+.s-full{font-size:13px;color:var(--light-dim);padding:8px 12px;border:1px solid var(--light-rule);border-radius:999px;white-space:nowrap}
+.s-full:hover{color:var(--light);border-color:var(--light-dim)}
+@media (max-width:420px){.s-full{display:none}}
+
+/* ── A: экраны с прилипанием ── */
+html.s-snap{scroll-snap-type:y mandatory}
+.a-screen{position:relative;z-index:2;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-end;padding:76px var(--pad) clamp(84px,12vh,120px)}
+.a-screen::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,rgba(8,17,29,.95) 0%,rgba(8,17,29,.7) 38%,rgba(8,17,29,0) 70%)}
+.a-screen--solid::before{background:var(--night)}
+.a-screen--paper{color:var(--ink)}
+.a-screen--paper::before{background:var(--paper)}
+.a-kick{font:400 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#ff8a5c}
+.a-screen--paper .a-kick{color:var(--signal-ink)}
+.a-title{font:500 clamp(40px,7.2vw,104px)/.98 var(--display);letter-spacing:-.04em;max-width:13ch;text-wrap:balance;margin-top:10px}
+html[data-lang="tg"] .a-title{font-size:clamp(36px,6.4vw,92px);max-width:14ch}
+.a-text{margin-top:16px;font-size:clamp(17px,1.6vw,22px);line-height:1.45;max-width:36ch;color:var(--light-dim);text-wrap:pretty}
+.a-screen--paper .a-text{color:var(--dim)}
+.a-media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#0b1522}
+.a-media video,.a-media img{width:100%;height:100%;object-fit:cover}
+.a-phone{width:min(300px,62vw);aspect-ratio:9/16;border-radius:28px;overflow:hidden;border:8px solid #04080e;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);background:#0b1522;margin-bottom:22px}
+.a-phone video{width:100%;height:100%;object-fit:cover}
+.a-big{font:500 clamp(64px,13vw,176px)/.9 var(--display);letter-spacing:-.05em;color:var(--ink)}
+.a-big small{display:block;font:400 clamp(18px,2vw,26px)/1.2 var(--text);letter-spacing:0;color:var(--dim);margin-top:10px}
+.a-cta{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:28px}
+.a-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:400 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--light-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
+.a-hint i{width:1px;height:28px;background:linear-gradient(var(--light-dim),transparent);animation:hint 1.8s var(--ease) infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.a-chat{display:grid;gap:8px;max-width:420px;margin-bottom:22px}
+.a-chat p{padding:10px 13px;border-radius:14px;background:#1d2a39;color:#e9eef4;font-size:15px;line-height:1.4;max-width:88%}
+.a-chat p.me{justify-self:end;background:#2b5278}
+.a-list{display:grid;gap:10px;margin-top:20px;max-width:40ch}
+.a-list li{position:relative;padding-left:28px;font-size:clamp(17px,1.5vw,20px);line-height:1.4}
+.a-list li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:7px;border-left:2px solid var(--signal);border-bottom:2px solid var(--signal);transform:rotate(-45deg)}
+.a-screen--paper .a-list li::before{border-color:var(--signal-ink)}
+.a-verse{font:italic 400 clamp(32px,5.4vw,80px)/1.12 var(--verse);color:#fff7ea;text-wrap:balance;max-width:20ch}
+.a-verse-by{margin-top:16px;color:#ff8a5c}
+.a-center{align-items:center;text-align:center;justify-content:center}
+.a-center .a-title,.a-center .a-text{margin-left:auto;margin-right:auto}
+
+/* ── B: сторис ── */
+html.b-html,html.b-html body{height:100%;overflow:hidden;overscroll-behavior:none}
+.b-stage{position:fixed;inset:0;z-index:2;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.b-bars{position:fixed;top:max(10px,env(safe-area-inset-top));left:12px;right:12px;z-index:45;display:flex;gap:4px}
+.b-bars i{flex:1;height:3px;border-radius:3px;background:rgba(238,242,246,.28);overflow:hidden;position:relative}
+.b-bars i b{position:absolute;inset:0;background:var(--light);transform-origin:left;transform:scaleX(0)}
+.b-html .s-top{top:14px;background:none}
+.b-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:90px var(--pad) clamp(90px,14vh,130px);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s .45s}
+.b-slide.is-on{opacity:1;visibility:visible;transition:opacity .45s var(--ease),visibility 0s}
+.b-slide::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(8,17,29,.92) 0%,rgba(8,17,29,.55) 45%,rgba(8,17,29,.08) 75%)}
+.b-slide--solid::before{background:var(--night)}
+.b-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.b-bg video,.b-bg img{width:100%;height:100%;object-fit:cover}
+.b-title{font:500 clamp(38px,9vw,96px)/1 var(--display);letter-spacing:-.04em;max-width:14ch;text-wrap:balance}
+html[data-lang="tg"] .b-title{font-size:clamp(34px,8vw,86px)}
+.b-text{margin-top:14px;font-size:clamp(17px,2.2vw,22px);line-height:1.45;color:var(--light-dim);max-width:34ch}
+.b-tap{position:fixed;top:60px;bottom:110px;z-index:3;width:38%}
+.b-tap--prev{left:0}.b-tap--next{right:0;width:62%}
+.b-cta{position:relative;z-index:4;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:24px}
+.b-nav{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:44;display:flex;gap:8px}
+.b-nav button{width:46px;height:46px;border-radius:50%;background:rgba(8,17,29,.86);border:1px solid var(--light-rule);display:grid;place-items:center}
+.b-nav button svg{width:20px;height:20px;fill:none;stroke:var(--light);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.b-nav button.b-next{background:var(--signal);border-color:var(--signal)}
+.b-nav button.b-next svg{stroke:#160802}
+.b-pause{font:400 11px/1 var(--mono);letter-spacing:.06em;color:var(--light-dim);align-self:center;min-width:90px;text-align:center}
+
+/* ── C: одна минута ── */
+.c-wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:84px var(--pad) 70px}
+.c-head{display:grid;gap:14px}
+.c-title{font:500 clamp(36px,6vw,80px)/1 var(--display);letter-spacing:-.04em;max-width:15ch;text-wrap:balance}
+.c-lead{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--light-dim);max-width:46ch}
+.c-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
+.c-card{border-radius:16px;overflow:hidden;background:#101c2c}
+.c-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.c-card p{padding:12px 14px 14px;font-size:15px;line-height:1.4}
+.c-card b{display:block;font:500 17px/1.2 var(--display);margin-bottom:4px}
+.c-get{margin-top:36px;padding:clamp(20px,3vw,32px);border-radius:18px;background:var(--paper);color:var(--ink);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center}
+.c-get h2{font:500 clamp(24px,2.6vw,36px)/1.1 var(--display);letter-spacing:-.03em}
+.c-price{font:500 clamp(48px,7vw,92px)/.95 var(--display);letter-spacing:-.045em;color:var(--signal-ink)}
+.c-price small{display:block;font:400 15px/1.35 var(--text);letter-spacing:0;color:var(--dim);margin-top:8px}
+.c-actions{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:28px}
+@media (max-width:760px){
+  .c-cards{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .c-card p{padding:8px 9px 10px;font-size:12.5px}
+  .c-card b{font-size:13.5px}
+  .c-get{grid-template-columns:1fr}
+}
+
+/* пока 3D грузится — готовая картинка дома */
+html:not(.scene-ready):not(.no-webgl) .scene-poster{display:block}

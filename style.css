@@ -561,3 +561,6 @@ html[data-lang="tg"] .panel .h2{font-size:clamp(26px,2.8vw,44px)}
   .hero__title{font-size:30px}
   .hero__lead{font-size:14.5px}
 }
+
+/* пока 3D грузится — готовая картинка дома */
+html:not(.scene-ready):not(.no-webgl) .scene-poster{display:block}

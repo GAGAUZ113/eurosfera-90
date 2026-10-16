@@ -12,3 +12,4 @@ js/three.core.js
 # служебные файлы macOS на флешке exFAT
 ._*
 .DS_Store
+_сборка/short_spec_draft.json
