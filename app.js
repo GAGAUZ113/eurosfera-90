@@ -30,6 +30,15 @@
       if (l === 'tg') u.searchParams.set('lang', 'tj'); else u.searchParams.delete('lang');
       history.replaceState(null, '', u.pathname + u.search + u.hash);
     }
+    $$('a[data-keep-lang]').forEach(function (a) {
+      var u = new URL(a.getAttribute('href'), location.href);
+      if (l === 'tg') u.searchParams.set('lang', 'tj'); else u.searchParams.delete('lang');
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
+    });
+    $$('a[data-href-tg]').forEach(function (a) {
+      if (!a.hasAttribute('data-href-ru')) a.setAttribute('data-href-ru', a.getAttribute('href'));
+      a.setAttribute('href', a.getAttribute(l === 'tg' ? 'data-href-tg' : 'data-href-ru'));
+    });
     buildToc();
     swapA11y(l);
     lastIdx = -1;

@@ -459,6 +459,15 @@ html[data-lang="tg"] .contact__title{font-size:clamp(34px,4.2vw,64px);max-width:
 .contact__big{font:400 clamp(22px,2.2vw,32px)/1.25 var(--display);letter-spacing:-.02em;justify-self:end;background:linear-gradient(var(--signal),var(--signal)) 0 100%/100% 2px no-repeat;padding-bottom:2px;transition:color .25s}
 .contact__big:hover{color:var(--signal)}
 .contact__firm{margin-top:22px;color:var(--light-dim);text-transform:none;letter-spacing:.02em;font-size:12px}
+/* Написать лично: Telegram и WhatsApp — на всех страницах */
+.dm{display:flex;flex-wrap:wrap;gap:10px}
+.dm a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px 0 16px;border-radius:999px;border:1px solid var(--light-rule);color:var(--light);font:500 16px/1.1 var(--text);transition:background .25s,border-color .25s,transform .2s var(--ease)}
+.dm a:hover{border-color:var(--light-dim)}
+.dm a:active{transform:scale(.97)}
+.dm svg{width:20px;height:20px;flex:none;fill:currentColor}
+.dm .dm__tg{background:var(--signal);border-color:var(--signal);color:#160802}
+.dm .dm__tg:hover{background:#ff7340;border-color:#ff7340}
+.contact .dm{justify-content:flex-end;margin-top:20px}
 .credits{margin-top:12px;font-size:12px;color:rgba(238,242,246,.5);max-width:60ch;margin-left:auto}
 .ch--final::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,rgba(8,17,29,.92) 0%,rgba(8,17,29,0) 50%)}
 @media (max-width:900px){
@@ -468,6 +477,7 @@ html[data-lang="tg"] .contact__title{font-size:clamp(34px,4.2vw,64px);max-width:
   .contact__big{justify-self:start}
   .credits{margin-left:0}
   .contact__next{margin-left:0}
+  .contact .dm{justify-content:flex-start}
 }
 
 /* без движения */

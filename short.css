@@ -2,6 +2,7 @@
 .s-body{padding:0;overflow-x:clip}
 .s-top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;gap:12px;height:54px;padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));background:linear-gradient(180deg,rgba(8,17,29,.9),rgba(8,17,29,0))}
 .s-top img{height:20px;width:auto}
+.s-top > a:first-child{display:flex}
 .s-top .bar__lang{margin-left:auto}
 .s-full{font-size:13px;color:var(--light-dim);padding:8px 12px;border:1px solid var(--light-rule);border-radius:999px;white-space:nowrap}
 .s-full:hover{color:var(--light);border-color:var(--light-dim)}
@@ -75,7 +76,7 @@ html[data-lang="tg"] .b-title{font-size:clamp(34px,8vw,86px)}
 .c-lead{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--light-dim);max-width:46ch}
 .c-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
 .c-card{border-radius:16px;overflow:hidden;background:#101c2c}
-.c-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.c-card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
 .c-card p{padding:12px 14px 14px;font-size:15px;line-height:1.4}
 .c-card b{display:block;font:500 17px/1.2 var(--display);margin-bottom:4px}
 .c-get{margin-top:36px;padding:clamp(20px,3vw,32px);border-radius:18px;background:var(--paper);color:var(--ink);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center}
@@ -83,10 +84,18 @@ html[data-lang="tg"] .b-title{font-size:clamp(34px,8vw,86px)}
 .c-price{font:500 clamp(48px,7vw,92px)/.95 var(--display);letter-spacing:-.045em;color:var(--signal-ink)}
 .c-price small{display:block;font:400 15px/1.35 var(--text);letter-spacing:0;color:var(--dim);margin-top:8px}
 .c-actions{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:28px}
+.c-label{margin-top:34px;color:#ff8a5c}
+.c-label + .c-cards{margin-top:14px}
+.c-meet{margin-top:44px;font:500 clamp(28px,3.4vw,46px)/1.05 var(--display);letter-spacing:-.03em;max-width:18ch;text-wrap:balance}
+.c-meet + .c-lead{margin-top:12px}
+.c-more{margin-top:26px;display:grid;gap:6px;max-width:52ch}
+.c-more .link{justify-self:start}
+.c-more__t{font-size:14.5px;line-height:1.45;color:var(--light-dim)}
 @media (max-width:760px){
-  .c-cards{grid-template-columns:1fr 1fr 1fr;gap:8px}
-  .c-card p{padding:8px 9px 10px;font-size:12.5px}
-  .c-card b{font-size:13.5px}
+  .c-cards{grid-template-columns:1fr;gap:10px}
+  .c-card{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:start}
+  .c-card p{padding:10px 12px 12px;font-size:14px}
+  .c-card b{font-size:15.5px}
   .c-get{grid-template-columns:1fr}
 }
 

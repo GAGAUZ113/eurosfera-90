@@ -27,6 +27,15 @@
       a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
     });
     swapVideos(l);
+    $$('a[data-href-tg]').forEach(function (a) {
+      if (!a.hasAttribute('data-href-ru')) a.setAttribute('data-href-ru', a.getAttribute('href'));
+      a.setAttribute('href', a.getAttribute(l === 'tg' ? 'data-href-tg' : 'data-href-ru'));
+    });
+    // подписи для экранных чтецов: русская — в aria-label, таджикская — в data-tg-label
+    $$('[data-tg-label]').forEach(function (el) {
+      if (!el.hasAttribute('data-ru-label')) el.setAttribute('data-ru-label', el.getAttribute('aria-label') || '');
+      el.setAttribute('aria-label', el.getAttribute(l === 'tg' ? 'data-tg-label' : 'data-ru-label'));
+    });
     if (deck.renderNow) deck.renderNow();
   }
   $$('[data-set-lang]').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); }); });
@@ -147,6 +156,12 @@
     }, { threshold: 0.4 });
     $$('video').forEach(function (v) { vio.observe(v); });
   }
+
+  /* шапка получает подложку, как только страница сдвинулась */
+  var onScroll = function () { root.classList.toggle('is-scrolled', (window.scrollY || window.pageYOffset || 0) > 8); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  /* ролик без петли: доиграл — вернулся к первому кадру, если так помечен */
+  $$('video[data-rest="start"]').forEach(function (v) { v.addEventListener('ended', function () { v.currentTime = 0; }); });
 
   if (lang() === 'tg') setLang('tg', false); else swapVideos('ru');
 })();
