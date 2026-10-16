@@ -1,0 +1,14 @@
+# Внутреннее — в открытый репозиторий не уходит
+PRODUCT.md
+DESIGN.md
+_ЧТО_ЗДЕСЬ.md
+src/
+data/
+_сборка/
+.impeccable/
+# исходники three.js нужны только для пересборки (в js/scene.min.js уже всё есть)
+js/three.module.js
+js/three.core.js
+# служебные файлы macOS на флешке exFAT
+._*
+.DS_Store
