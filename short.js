@@ -173,6 +173,9 @@
       else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
     });
     v.addEventListener('webkitendfullscreen', function () { v.controls = false; });
+    v.addEventListener('play', function () { c.classList.add('is-playing'); });
+    v.addEventListener('pause', function () { c.classList.remove('is-playing'); });
+    v.addEventListener('ended', function () { c.classList.remove('is-playing'); });
   });
   document.addEventListener('fullscreenchange', function () {
     if (!document.fullscreenElement) $$('.r-node .clip video').forEach(function (v) { v.controls = false; });
