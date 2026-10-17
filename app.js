@@ -222,7 +222,12 @@
   if (reduced) vids.forEach(function (v) { v.controls = true; });
   if ('IntersectionObserver' in window) {
     var pio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { poster(e.target); pio.unobserve(e.target); } });
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        // лента роликов листается вбок — обложки сразу всем её карточкам
+        var strip = e.target.closest ? e.target.closest('.log') : null;
+        (strip ? $$('video[data-src]', strip) : [e.target]).forEach(function (v) { poster(v); pio.unobserve(v); });
+      });
     }, { rootMargin: '900px 0px' });
     vids.forEach(function (v) { pio.observe(v); });
   } else vids.forEach(poster);

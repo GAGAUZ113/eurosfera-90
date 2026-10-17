@@ -163,5 +163,20 @@
   /* ролик без петли: доиграл — вернулся к первому кадру, если так помечен */
   $$('video[data-rest="start"]').forEach(function (v) { v.addEventListener('ended', function () { v.currentTime = 0; }); });
 
+  /* ролик узла на главной: нажал — открылся на весь экран с кнопками плеера */
+  $$('.r-node .clip').forEach(function (c) {
+    var v = $('video', c); if (!v) return;
+    c.addEventListener('click', function () {
+      load(v); v.controls = true;
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+      if (v.requestFullscreen) { var f = v.requestFullscreen(); if (f && f.catch) f.catch(function () { v.controls = false; }); }
+      else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+    });
+    v.addEventListener('webkitendfullscreen', function () { v.controls = false; });
+  });
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement) $$('.r-node .clip video').forEach(function (v) { v.controls = false; });
+  });
+
   if (lang() === 'tg') setLang('tg', false); else swapVideos('ru');
 })();

@@ -56,6 +56,7 @@ ul,ol{list-style:none}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:var(--night)}
 ::-webkit-scrollbar-thumb{background:#24364f;border-radius:10px;border:2px solid var(--night)}
+.nw{white-space:nowrap}
 .mono{font:400 12.5px/1.45 var(--mono);letter-spacing:.05em;text-transform:uppercase}
 .skip{position:fixed;left:-999px;top:8px;z-index:99;background:var(--paper);color:var(--ink);padding:10px 14px;border-radius:8px}
 .skip:focus{left:16px}
