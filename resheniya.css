@@ -13,13 +13,16 @@ html.is-scrolled .r-top{background:rgba(8,17,29,.9);-webkit-backdrop-filter:blur
 @media (max-width:699px){
   .r-topdm a{width:44px;min-height:44px;padding:0;justify-content:center}
   .r-topdm a span{display:none}
-  .r-top .bar__lang button{min-height:42px}
+  .r-top .bar__lang button{min-height:44px}
   .r-links .link{padding:10px 0 12px;background-position:0 calc(100% - 8px)}
 }
 @media (max-width:380px){ .s-top img{height:18px} }
 @media (max-width:340px){
+  .r-top{gap:8px}
   .s-top img{height:16px}
   .r-top .bar__lang button{min-width:38px;padding:8px 9px}
+  .r-topdm{gap:4px}
+  .r-topdm a{width:42px;min-height:42px}
 }
 
 /* ── первый экран ── */
@@ -80,10 +83,10 @@ html[data-lang="tg"] .r-title{font-size:clamp(38px,4.8vw,76px);max-width:13ch}
 /* значок «смотреть», пока ролик стоит */
 .r-node .clip::after{content:"";position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:rgba(8,17,29,.62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='%23eef2f6'/%3E%3C/svg%3E") 55% 50%/26px no-repeat;pointer-events:none;transition:opacity .3s}
 .r-node .clip.is-playing::after{opacity:0}
-.clip__full{position:absolute;right:10px;bottom:10px;width:40px;height:40px;border-radius:50%;background:rgba(8,17,29,.78);border:1px solid rgba(238,242,246,.28)}
+.clip__full{position:absolute;right:10px;bottom:10px;width:44px;height:44px;border-radius:50%;background:rgba(8,17,29,.78);border:1px solid rgba(238,242,246,.28)}
 .clip__full::before,.clip__full::after{content:"";position:absolute;width:8px;height:8px;border:2px solid var(--light)}
-.clip__full::before{left:11px;bottom:11px;border-right:0;border-top:0}
-.clip__full::after{right:11px;top:11px;border-left:0;border-bottom:0}
+.clip__full::before{left:13px;bottom:13px;border-right:0;border-top:0}
+.clip__full::after{right:13px;top:13px;border-left:0;border-bottom:0}
 .r-node__t{grid-column:2;grid-row:1;font:500 clamp(26px,2.6vw,40px)/1.08 var(--display);letter-spacing:-.03em;max-width:22ch;text-wrap:balance}
 .r-steps{grid-column:2;grid-row:2;align-self:start;margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
 .r-steps > div{padding-top:14px;border-top:1px solid var(--rule)}
@@ -146,17 +149,21 @@ html[data-lang="tg"] .r-title{font-size:clamp(38px,4.8vw,76px);max-width:13ch}
 .r-get li::before{content:"";position:absolute;left:2px;top:.4em;width:12px;height:7px;border-left:2px solid rgba(238,242,246,.55);border-bottom:2px solid rgba(238,242,246,.55);transform:rotate(-45deg)}
 .r-soft{margin-top:28px;font:300 clamp(18px,1.6vw,23px)/1.4 var(--display);letter-spacing:-.01em;max-width:40ch;text-wrap:balance}
 .r-links{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:26px}
-.btn--ghost{background:transparent;color:var(--light);box-shadow:inset 0 0 0 1px var(--light-rule)}
-.btn--ghost:hover{background:rgba(238,242,246,.06)}
-.btn--ghost i{background:transparent;box-shadow:inset 0 0 0 1px var(--light-rule)}
-.btn--ghost i::before{border-color:var(--light)}
+.btn--light{background:var(--light);color:var(--ink)}
+.btn--light:hover{background:#fff}
+.btn--light i{background:var(--ink)}
+.btn--light i::before{border-color:var(--light)}
+.btn--line{background:transparent;color:var(--light);box-shadow:inset 0 0 0 1.5px rgba(238,242,246,.62)}
+.btn--line:hover{background:rgba(238,242,246,.08);box-shadow:inset 0 0 0 1.5px var(--light)}
+.btn--line i{background:rgba(238,242,246,.14)}
+.btn--line i::before{border-color:var(--light)}
 .r-more__pic{position:relative;display:block;justify-self:center;width:100%;max-width:400px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px var(--light-rule)}
 .r-more__pic img{width:100%;height:auto;transition:transform .7s var(--ease)}
 .r-more__pic:hover img{transform:scale(1.03)}
 .r-more__pic::after{content:"";position:absolute;inset:auto 0 0 0;height:34%;background:linear-gradient(0deg,rgba(8,17,29,.85),rgba(8,17,29,0));pointer-events:none}
 .r-more__cap{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;color:var(--light);font-size:12px}
 @media (max-width:899px){
-  .r-more{grid-template-columns:1fr}
+  .r-more{grid-template-columns:minmax(0,1fr)}
   .r-more__pic{max-width:340px;justify-self:start}
 }
 @media (max-width:599px){
@@ -225,4 +232,8 @@ html[data-lang="tg"] .r-title{font-size:clamp(38px,4.8vw,76px);max-width:13ch}
   .r-hero__photo{height:min(19svh,110px)}
   .r-title{font-size:30px}
   .r-hero__photo figcaption{display:none}
+}
+/* самые узкие телефоны: длинная таджикская подпись кнопки переносится */
+@media (max-width:340px){
+  .r-links .btn{white-space:normal;max-width:100%}
 }

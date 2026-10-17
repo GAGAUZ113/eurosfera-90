@@ -468,6 +468,8 @@ html[data-lang="tg"] .contact__title{font-size:clamp(34px,4.2vw,64px);max-width:
 .dm svg{width:20px;height:20px;flex:none;fill:currentColor}
 .dm .dm__tg{background:var(--signal);border-color:var(--signal);color:#160802}
 .dm .dm__tg:hover{background:#ff7340;border-color:#ff7340}
+.dm .dm__wa{border-color:rgba(238,242,246,.55)}
+.dm .dm__wa:hover{border-color:var(--light);background:rgba(238,242,246,.08)}
 .contact .dm{justify-content:flex-end;margin-top:20px}
 .credits{margin-top:12px;font-size:12px;color:rgba(238,242,246,.5);max-width:60ch;margin-left:auto}
 .ch--final::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,rgba(8,17,29,.92) 0%,rgba(8,17,29,0) 50%)}
