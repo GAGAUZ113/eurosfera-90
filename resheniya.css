@@ -149,7 +149,7 @@ html[data-lang="tg"] .r-title{font-size:clamp(38px,4.8vw,76px);max-width:13ch}
 .r-get li::before{content:"";position:absolute;left:2px;top:.4em;width:12px;height:7px;border-left:2px solid rgba(238,242,246,.55);border-bottom:2px solid rgba(238,242,246,.55);transform:rotate(-45deg)}
 .r-soft{margin-top:28px;font:300 clamp(18px,1.6vw,23px)/1.4 var(--display);letter-spacing:-.01em;max-width:40ch;text-wrap:balance}
 .r-links{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:26px}
-.btn--light{background:var(--light);color:var(--ink)}
+.btn--light{position:relative;background:var(--light);color:var(--ink)}
 .btn--light:hover{background:#fff}
 .btn--light i{background:var(--ink)}
 .btn--light i::before{border-color:var(--light)}
@@ -236,4 +236,16 @@ html[data-lang="tg"] .r-title{font-size:clamp(38px,4.8vw,76px);max-width:13ch}
 /* самые узкие телефоны: длинная таджикская подпись кнопки переносится */
 @media (max-width:340px){
   .r-links .btn{white-space:normal;max-width:100%}
+}
+/* «Программа коротко»: зовёт нажать — мягкое кольцо и короткое вздрагивание раз в несколько секунд */
+.btn--light::after{content:"";position:absolute;inset:0;border-radius:999px;border:2px solid rgba(238,242,246,.75);opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+  html:not(.reduce) .btn--light{animation:r-nudge 5s var(--ease) 1.5s infinite}
+  html:not(.reduce) .btn--light::after{animation:r-ring 2.5s ease-out infinite}
+  html:not(.reduce) .btn--light:hover,html:not(.reduce) .btn--light:focus-visible{animation:none}
+}
+@keyframes r-nudge{0%,80%,100%{transform:none}83%{transform:translateX(-4px) rotate(-1.6deg)}86%{transform:translateX(4px) rotate(1.6deg)}89%{transform:translateX(-3px) rotate(-1deg)}92%{transform:translateX(2px) rotate(.6deg)}95%{transform:none}}
+@keyframes r-ring{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.14,1.5);opacity:0}}
+@media (max-width:599px){
+  .r-links .btn--light{width:100%;justify-content:space-between;white-space:normal;text-align:left;padding-top:9px;padding-bottom:9px;font-size:17px;line-height:1.2}
 }
